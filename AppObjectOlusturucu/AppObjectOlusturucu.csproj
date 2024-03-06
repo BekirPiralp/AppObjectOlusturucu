@@ -11,11 +11,11 @@
     <PackageProjectUrl>https://github.com/BekirPiralp/AppObjectOlusturucu/</PackageProjectUrl>
     <Copyright>Copyright (c) BekirPİRALP 2024</Copyright>
     <RepositoryUrl>https://github.com/BekirPiralp/AppObjectOlusturucu/</RepositoryUrl>
-    <PackageTags>Creater;Object;Build;New;DependencyInjection</PackageTags>
+    <PackageTags>Creater;Object;Build;New;DependencyInjection;AppObjectOlusturucu;AppObject;Olusturucu;AppOlusturucu</PackageTags>
     <PackAsTool>False</PackAsTool>
     <RepositoryType>git</RepositoryType>
     <NeutralLanguage>tr</NeutralLanguage>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <GenerateDocumentationFile>False</GenerateDocumentationFile>
   </PropertyGroup>
 
