@@ -8,6 +8,11 @@
     <Title>ObjectCreator</Title>
     <Authors>Bekir PİRALP</Authors>
     <Description>Katmanlı Mimaride Olsun farklı sistemlerde tasarım yaparken ilgili Interface nesnesi için tek bir nesne üretmeye yarayan ideal bir araçtır. </Description>
+    <PackageProjectUrl>https://github.com/BekirPiralp/AppObjectOlusturucu/</PackageProjectUrl>
+    <Copyright>Copyright (c) BekirPİRALP 2024</Copyright>
+    <RepositoryUrl>https://github.com/BekirPiralp/AppObjectOlusturucu/</RepositoryUrl>
+    <PackageTags>Creater;Object;Build;New;</PackageTags>
+    <PackAsTool>True</PackAsTool>
   </PropertyGroup>
 
   <ItemGroup>
