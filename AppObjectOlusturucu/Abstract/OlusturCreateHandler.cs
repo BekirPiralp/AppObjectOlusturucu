@@ -5,10 +5,17 @@
 		protected IOlusturucuCreateHandler? _nextHandler;
 		public void HandleAndNext()
 		{
-			this.CreateObj();
-			if (this._nextHandler != null)
+			try
 			{
-				this._nextHandler.HandleAndNext();
+				this.CreateObj();
+				if (this._nextHandler != null)
+				{
+					this._nextHandler.HandleAndNext();
+				}
+			}
+			catch 
+			{
+				throw new MethodAccessException(nameof(this.CreateObj));
 			}
 		}
 
