@@ -12,7 +12,7 @@
     <Copyright>Copyright (c) BekirPİRALP 2024</Copyright>
     <RepositoryUrl>https://github.com/BekirPiralp/AppObjectOlusturucu/</RepositoryUrl>
     <PackageTags>Creater;Object;Build;New;</PackageTags>
-    <PackAsTool>True</PackAsTool>
+    <PackAsTool>False</PackAsTool>
     <RepositoryType>git</RepositoryType>
     <NeutralLanguage>tr</NeutralLanguage>
   </PropertyGroup>
