@@ -13,6 +13,8 @@
     <RepositoryUrl>https://github.com/BekirPiralp/AppObjectOlusturucu/</RepositoryUrl>
     <PackageTags>Creater;Object;Build;New;</PackageTags>
     <PackAsTool>True</PackAsTool>
+    <RepositoryType>git</RepositoryType>
+    <NeutralLanguage>tr</NeutralLanguage>
   </PropertyGroup>
 
   <ItemGroup>
