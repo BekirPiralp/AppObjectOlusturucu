@@ -1,7 +1,7 @@
 # <p style="text-align:center;">**Uygulama Nesne Oluþturcu** <br/> &emsp; (App Object Creater)</p>
 
 <div style="display: flex;
-  
+  align-items: center;
   justify-content: center;">
 
 |Platform|Bilgi|
