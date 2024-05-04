@@ -19,16 +19,17 @@ namespace AppObjectOlusturucuTest
             }
             catch (CreateException ex)
             {
-                Assert.AreEqual(ex.Message, "Kayýt Esnasýnda Hata Oluþtu.\nDetay: count 0", false,"Error");
+                Assert.AreEqual(ex.Message, "Kayýt Esnasýnda Hata Oluþtu.\nDetay: count 0", false, "Error");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Assert.Fail(ex.Message+" \n source: "+ex.Source+"\n stackTrace: "+ex.StackTrace);
+                Assert.Fail(ex.Message + " \n source: " + ex.Source + "\n stackTrace: " + ex.StackTrace);
             }
         }
 
         [TestMethod]
-        public void Object_Refrence() {
+        public void Object_Refrence()
+        {
             ServiceCollection services = new ServiceCollection();
 
             services.OlusturcuServiceCreate<TestCreator>();
@@ -44,7 +45,7 @@ namespace AppObjectOlusturucuTest
             }
 
 
-            Assert.IsNotNull(_olusturucu,"Nesne Oluþturulamadý");
+            Assert.IsNotNull(_olusturucu, "Nesne Oluþturulamadý");
 
         }
 
@@ -60,7 +61,7 @@ namespace AppObjectOlusturucuTest
             catch (Exception ex)
             {
 
-                Assert.Fail("Hata ile karþilaþýldý.\nDetay: " + ex.Message +"\nStacktTrace: "+ex.StackTrace);
+                Assert.Fail("Hata ile karþilaþýldý.\nDetay: " + ex.Message + "\nStacktTrace: " + ex.StackTrace);
             }
 
             Olusturucu? _olusturucu = null;
@@ -102,7 +103,7 @@ namespace AppObjectOlusturucuTest
             var a = Olusturucu.olustur.GetObj<ITest>();
             var b = Olusturucu.olustur.GetObj<ITest2>();
 
-            Assert.IsNotNull(a,"Nesne getirilemedi. a");
+            Assert.IsNotNull(a, "Nesne getirilemedi. a");
 
             Assert.AreEqual(a.message, "testClass");
             a.print();
@@ -117,14 +118,14 @@ namespace AppObjectOlusturucuTest
         [TestMethod]
         public void Get_Object_2()
         {
-            
+
             ServiceCollection services = new ServiceCollection();
             services.OlusturcuServiceCreate<TestCreator2>();
 
             Olusturucu? _olusturucu = null;
-           
+
             _olusturucu = Olusturucu.olustur;
-            
+
 
             var a = Olusturucu.olustur.GetObj<ITest3>();
             var b = Olusturucu.olustur.GetObj<ITest2>();
@@ -162,10 +163,10 @@ namespace AppObjectOlusturucuTest
 
         interface IT
         {
-            string message { get;}
+            string message { get; }
         }
 
-        interface ITest :IT
+        interface ITest : IT
         {
             void print();
         }
@@ -213,7 +214,90 @@ namespace AppObjectOlusturucuTest
             {
                 Console.WriteLine(message);
             }
-            
+
         }
+
+        [TestMethod]
+        public void Get_Object_in_object()
+        {
+            ServiceCollection services = new();
+            services.OlusturcuServiceCreate(new Get_object_Creta_Handler());
+
+            IIT? a = null;
+            IIT2? b = default;
+            try
+            {
+                a = Olusturucu.olustur.GetObj<IIT>();
+                b = Olusturucu.olustur.GetObj<IIT2>();
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail("Message of: " + ex.Message + "\n stacktrace of: " + ex.StackTrace);
+            }
+
+            Assert.IsNotNull(a);
+            Assert.IsInstanceOfType<TClass>(a);
+            Assert.AreEqual(a.message, nameof(TClass));
+
+            a.print();
+
+            Assert.IsNotNull(b);
+            Assert.IsInstanceOfType<TClass2>(b);
+            Assert.AreEqual(b.message, nameof(TClass2));
+
+            b.print();
+
+            Olusturucu.olustur.Dispose();
+        }
+
+
+        class Get_object_Creta_Handler : OlusturCreateHandler
+        {
+            public override void CreateObj()
+            {
+                OlusturCreator.CreateObject<IIT, TClass>();
+                OlusturCreator.CreateObject<IIT2, TClass2>();
+            }
+        }
+
+        interface IIT : IT
+        {
+            void print();
+        }
+        class TClass : IIT
+        {
+            public TClass()
+            {
+                var a = Olusturucu.olustur.GetObj<IIT2>();
+                if (a == null)
+                    throw new NullReferenceException();
+            }
+
+            public string message => nameof(TClass);
+
+            public void print()
+            {
+                Console.WriteLine(message);
+            }
+        }
+
+        interface IIT2 : IT
+        {
+            void print();
+
+        }
+        class TClass2 : IIT2
+        {
+            public string message => nameof(TClass2);
+
+            public void print()
+            {
+                Console.WriteLine(message);
+            }
+
+
+
+        }
+
     }
 }

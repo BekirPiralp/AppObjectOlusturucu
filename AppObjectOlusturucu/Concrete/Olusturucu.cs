@@ -14,7 +14,8 @@ namespace AppObjectOlusturucu.Concrete
 
 			foreach (var item in OlusturCreator._ObjectsTypes)
 			{
-				_Objects.Add(item.Key, Activator.CreateInstance(item.Value)!);
+				//Default value is null because object create is at down, that do create is in method of getObj   
+				_Objects.Add(item.Key, null!);
 			}
 		}
 
@@ -34,7 +35,7 @@ namespace AppObjectOlusturucu.Concrete
                             }
                         }
                     }
-                    return _olusturucu!; // burada null değil
+                    return _olusturucu!; // burada null değil  / it is not null here
                 }
 				catch(CreateException)
 				{
@@ -64,7 +65,11 @@ namespace AppObjectOlusturucu.Concrete
 		{
 			TInterface result;
 
-			result = (TInterface)_Objects.GetValueOrDefault(typeof(TInterface))!;
+			// if Object value is null, that create with Activator of create instance method 
+			_Objects[typeof(TInterface)] ??= Activator.CreateInstance(OlusturCreator._ObjectsTypes[typeof(TInterface)]!)!;
+
+
+            result = (TInterface)_Objects.GetValueOrDefault(typeof(TInterface))!;
 
 			return result;
 		}
