@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Çözüm Öğeleri", "Çöz
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppObjectOlusturucuTest", "AppObjectOlusturucuTest\AppObjectOlusturucuTest.csproj", "{B5B67F1A-72A9-4FC1-98A4-938CB783846F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{328BF672-8FC7-4DE4-9AD8-F0AB3BCA57D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{328BF672-8FC7-4DE4-9AD8-F0AB3BCA57D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{328BF672-8FC7-4DE4-9AD8-F0AB3BCA57D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5B67F1A-72A9-4FC1-98A4-938CB783846F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5B67F1A-72A9-4FC1-98A4-938CB783846F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5B67F1A-72A9-4FC1-98A4-938CB783846F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5B67F1A-72A9-4FC1-98A4-938CB783846F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
