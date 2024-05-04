@@ -16,22 +16,18 @@ namespace AppObjectOlusturucu.Concrete
 			where TInterface : class
 			where TObject : class, TInterface, new()
 		{
-			try
+            try
 			{
 				if (_ObjectsTypes.Count != 0)
 				{
 					var result = _ObjectsTypes.Where(p => p.Key.Equals(typeof(TInterface)));//TODO
 					if (result != null && result.Count() > 0)
 					{
-						var response = result.Where(p => p.Value.Equals(typeof(TObject)));
-						if (response != null && response.Count() > 0)
-						{
-							_ObjectsTypes.Remove(typeof(TInterface));
-						}
-						_ObjectsTypes.Add(typeof(TInterface), typeof(TObject));
+						_ObjectsTypes.Remove(typeof(TInterface));
+						
 					}
-
-				}
+                    _ObjectsTypes.Add(typeof(TInterface), typeof(TObject));
+                }
 				else
 				{
 					_ObjectsTypes.Add(typeof(TInterface), typeof(TObject));
@@ -40,7 +36,7 @@ namespace AppObjectOlusturucu.Concrete
 			catch
 			{
 
-				throw new CreateException();
+				throw new CreateException("Kayıt esnası hata");
 			}
 		}
 	}

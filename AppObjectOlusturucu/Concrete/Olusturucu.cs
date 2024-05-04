@@ -1,12 +1,17 @@
-﻿namespace AppObjectOlusturucu.Concrete
+﻿using AppObjectOlusturucu.Concrete.Exceptions;
+
+namespace AppObjectOlusturucu.Concrete
 {
-	public class Olusturucu
+    public class Olusturucu : IDisposable
 	{
-		private static Olusturucu? _olusturucu;
+		private static Olusturucu? _olusturucu = null;
 		private static readonly object lockObj = new Object();
 
 		private Olusturucu()
 		{
+			if (OlusturCreator._ObjectsTypes.Count == 0)
+				throw new CreateException("count 0");
+
 			foreach (var item in OlusturCreator._ObjectsTypes)
 			{
 				_Objects.Add(item.Key, Activator.CreateInstance(item.Value)!);
@@ -17,17 +22,28 @@
 		{
 			get
 			{
-				if (olustur == null)
+				try
 				{
-					lock (lockObj)
-					{
-						if (olustur == null)
-						{
-							_olusturucu = new Olusturucu();
-						}
-					}
+                    if (_olusturucu == null)
+                    {
+                        lock (lockObj)
+                        {
+                            if (_olusturucu == null)
+                            {
+                                _olusturucu = new Olusturucu();
+                            }
+                        }
+                    }
+                    return _olusturucu!; // burada null değil
+                }
+				catch(CreateException)
+				{
+					throw;
 				}
-				return _olusturucu!; // burada null değil
+				catch(Exception ex)
+				{
+					throw new Exception(ex.Message);
+				}
 			}
 		}
 
@@ -53,5 +69,11 @@
 			return result;
 		}
 
-	}
+        public void Dispose()
+        {
+            _olusturucu = null;
+
+			_Objects.Clear();
+        }
+    }
 }
