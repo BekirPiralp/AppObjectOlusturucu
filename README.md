@@ -59,7 +59,8 @@ namespace MyAppBackend.ExampleLayer {
 
 ```
 
-Gerekli eþlemelerin ardýndan ***Program.cs*** vb. þekilde ilk baþlatýlacak yerden ilgi service çelierek çalýþtýrýlýr.
+Gerekli eþlemelerin ardýndan ***Program.cs*** vb. þekilde ilk baþlatýlacak yerden ilgi service çekilerek çalýþtýrýlýr. 
+***Not: Tüm creaters (kayýt ediciler) çaðrýldýktan sonra Olusturucu ile nesne çaðrýlmaya gidilmelidir diðer þeilde ise Dipose edildikten sonra tekrar  oluþturulmalýdýr.***
 
 ``` C#
 using AppObjectOlusturucu.Concrete.Service;
